@@ -4,13 +4,15 @@
       <li class="page-item user-select-none" [ngClass]="{ disabled: currentPage === 0 }">
         <a class="page-link" (click)="onPreviousClick()">Prev</a>
       </li>
-      <li
-        class="page-item user-select-none"
-        [ngClass]="{ active: i === currentPage }"
-        *ngFor="let image of images; let i = index"
-      >
-        <a class="page-link" (click)="onClick(i)">{{ i + 1 }}</a>
-      </li>
+      <ng-container *ngFor="let image of images; let i = index">
+        <li
+          class="page-item user-select-none"
+          [ngClass]="{ active: i === currentPage }"
+          *ngIf="checkWindowIndex(i)"
+        >
+          <a class="page-link" (click)="onClick(i)">{{ i + 1 }}</a>
+        </li>
+      </ng-container>
       <li
         class="page-item user-select-none"
         [ngClass]="{ disabled: currentPage === images.length - 1 }"
@@ -20,3 +22,15 @@
     </ul>
   </nav>
 </div>
+
+<div>
+  <h4>{{ images[currentPage].title}}</h4>
+  <img [src]="images[currentPage].url" alt="">
+</div>
+
+<!-- <div [ngSwitch]="currentPage">
+  <div *ngSwitchCase="0">Page one</div>
+  <div *ngSwitchCase="1">Page two</div>
+  <div *ngSwitchCase="2">Page three</div>
+  <div *ngSwitchDefault>Different page!</div>
+</div> -->

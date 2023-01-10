@@ -43,4 +43,8 @@ export class AppComponent {
     console.log('next');
     this.currentPage++;
   }
+
+  checkWindowIndex(i: number) {
+    return Math.abs(this.currentPage - i) < 5;
+  }
 }
