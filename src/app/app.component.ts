@@ -40,7 +40,6 @@ export class AppComponent {
   }
 
   onNextClick() {
-    console.log('next');
     this.currentPage++;
   }
 
